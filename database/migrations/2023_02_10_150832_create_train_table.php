@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('train', function (Blueprint $table) {
+        Schema::create('trains', function (Blueprint $table) {
             $table->id();
             $table->string('company', 100);
             $table->string('departure_station', 200);
             $table->string('arrivals_station', 200);
-            $table->dateTimeTz('departure_time', $precison = 0);
-            $table->dateTimeTz('arrival_time', $precison = 0);
+            $table->time('departure_time');
+            $table->time('arrival_time');
             $table->string('train_code', 25);
             $table->tinyInteger('number_of_carriages');
-            $table->boolean('in time');
-            $table->boolean('deleted');
+            $table->boolean('in_time');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('train');
+        Schema::dropIfExists('trains');
     }
 };
